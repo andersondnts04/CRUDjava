@@ -1,10 +1,10 @@
-package CRUD;
+package meuCRUD;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class DAO {
+public class PessoaDAO1 {
 
     public void inserir(Pessoa pessoa){
         String sql = "INSERT INTO pessoa (nome, idade) VALUES (?, ?)";

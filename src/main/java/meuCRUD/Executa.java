@@ -1,8 +1,8 @@
-package CRUD;
+package meuCRUD;
 
 public class Executa {
     public static void main(String[] args) {
-        DAO dao = new DAO();
+        PessoaDAO1 dao = new PessoaDAO1();
 
         try {
             Pessoa pessoa = new Pessoa();

@@ -1,4 +1,4 @@
-package CRUD;
+package meuCRUD;
 
 public class Pessoa {
     private String nome;
