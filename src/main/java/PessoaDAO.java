@@ -5,7 +5,7 @@ import java.util.List;
 
 public class PessoaDAO{
 
-    public void inserir(Pessoa p) throws Exception {
+    public void inserir(Pessoa p){
         String sql = "INSERT INTO pessoa (nome, idade) VALUES (?, ?)";
 
         try (Connection conn = Conexao.conectar();
