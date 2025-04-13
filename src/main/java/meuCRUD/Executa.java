@@ -1,6 +1,6 @@
 package meuCRUD;
 
-public class Executa {
+public class Cadastra {
     public static void main(String[] args) {
         PessoaDAO1 dao = new PessoaDAO1();
 
