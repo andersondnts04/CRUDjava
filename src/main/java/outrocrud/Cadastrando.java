@@ -1,6 +1,6 @@
 package outrocrud;
 
-public class Exec {
+public class Cadastrando {
     public static void main(String[] args) {
         PessoalDAO pessoal = new PessoalDAO();
 

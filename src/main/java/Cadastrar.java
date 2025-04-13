@@ -1,6 +1,4 @@
-import java.util.List;
-
-public class Main {
+public class Cadastrar {
     public static void main(String[] args) {
         PessoaDAO dao = new PessoaDAO();
 
