@@ -6,7 +6,6 @@ public class Cadastra {
 
         try {
             Pessoa pessoa = new Pessoa();
-
             pessoa.setNome("Alfredo");
             pessoa.setIdade(30);
             dao.inserir(pessoa);
