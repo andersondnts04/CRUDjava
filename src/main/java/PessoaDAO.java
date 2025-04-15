@@ -18,27 +18,6 @@ public class PessoaDAO{
         }
     }
 
-    public List<Pessoa> listar() throws Exception {
-        List<Pessoa> pessoas = new ArrayList<>();
-        String sql = "SELECT * FROM pessoa";
-
-        try (Connection conn = Conexao.conectar();
-             Statement pst = conn.createStatement();
-             ResultSet rs = pst.executeQuery(sql)) {
-
-            while (rs.next()) {
-                Pessoa p = new Pessoa(
-                        rs.getInt("id"),
-                        rs.getString("nome"),
-                        rs.getInt("idade")
-                );
-                pessoas.add(p);
-            }
-        }
-
-        return pessoas;
-    }
-
     public void atualizarPessoa(Pessoa pessoa) {
         String sql = "UPDATE pessoa SET nome = ?, idade = ? WHERE id = ?";
 
