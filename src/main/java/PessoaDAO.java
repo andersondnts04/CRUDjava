@@ -1,4 +1,3 @@
-import java.lang.reflect.Executable;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -47,4 +46,27 @@ public class PessoaDAO{
             ex.printStackTrace();
         }
     }
+    public List<Pessoa> listarTodos() {
+        List<Pessoa> lista = new ArrayList<>();
+        String sql = "SELECT * FROM pessoa";
+
+        try (Connection conn = Conexao.conectar();
+             PreparedStatement pst = conn.prepareStatement(sql);
+             ResultSet resultado = pst.executeQuery()) {
+
+            while (resultado.next()) {
+                Pessoa p = new Pessoa();
+                p.setId(resultado.getInt("id"));
+                p.setNome(resultado.getString("nome"));
+                p.setIdade(resultado.getInt("idade"));
+                lista.add(p);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return lista;
+    }
+
 }
