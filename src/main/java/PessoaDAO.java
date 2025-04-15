@@ -39,25 +39,37 @@ public class PessoaDAO{
         return pessoas;
     }
 
-    public void atualizar(Pessoa p) throws Exception {
+    public void atualizarPessoa(Pessoa pessoa) {
         String sql = "UPDATE pessoa SET nome = ?, idade = ? WHERE id = ?";
 
-        try (Connection conn = Conexao.conectar();
-             PreparedStatement pst = conn.prepareStatement(sql)) {
-            pst.setString(1, p.getNome());
-            pst.setInt(2, p.getIdade());
-            pst.setInt(3, p.getId());
-            pst.executeUpdate();
+
+        try ( Connection conn = Conexao.conectar();
+            PreparedStatement pst = conn.prepareStatement(sql)){
+            pst.setString(1, pessoa.getNome());
+            pst.setInt(2, pessoa.getIdade());
+            pst.setInt(3, pessoa.getId());
+
+            int linhasAfetadas = pst.executeUpdate();
+            if (linhasAfetadas > 0) {
+                System.out.println("Pessoa atualizada com sucesso.");
+            } else {
+                System.out.println("Nenhuma pessoa encontrada com o ID informado.");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 
-    public void deletar(int id) throws Exception {
+
+    public void deletar(Pessoa pessoa) throws Exception {
         String sql = "DELETE FROM pessoa WHERE id = ?";
 
         try (Connection conn = Conexao.conectar();
              PreparedStatement pst = conn.prepareStatement(sql)) {
-            pst.setInt(1, id);
+            pst.setInt(1, pessoa.getId());
             pst.executeUpdate();
+        }catch (Exception ex){
+            ex.printStackTrace();
         }
     }
 }
