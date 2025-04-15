@@ -12,7 +12,7 @@ public class PessoaDAO{
              PreparedStatement pst = conn.prepareStatement(sql)) {
             pst.setString(1, p.getNome());
             pst.setInt(2, p.getIdade());
-            pst.executeUpdate();
+            pst.execute();
         }catch (Exception ex){
             ex.printStackTrace();
         }
@@ -49,12 +49,8 @@ public class PessoaDAO{
             pst.setInt(2, pessoa.getIdade());
             pst.setInt(3, pessoa.getId());
 
-            int linhasAfetadas = pst.executeUpdate();
-            if (linhasAfetadas > 0) {
-                System.out.println("Pessoa atualizada com sucesso.");
-            } else {
-                System.out.println("Nenhuma pessoa encontrada com o ID informado.");
-            }
+            pst.execute();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -67,7 +63,7 @@ public class PessoaDAO{
         try (Connection conn = Conexao.conectar();
              PreparedStatement pst = conn.prepareStatement(sql)) {
             pst.setInt(1, pessoa.getId());
-            pst.executeUpdate();
+            pst.execute();
         }catch (Exception ex){
             ex.printStackTrace();
         }
